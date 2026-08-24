@@ -74,11 +74,12 @@ publication_colors:
   links: "#173B50"
 
 # Publication list
-- title: "On the rigidity of Wasserstein contraction along heat flows"
-  status: "Preprint"
-  venue: ""
-  publication_info: "30 pages · 2025"
-  arxiv: "https://arxiv.org/abs/2505.02280"
+publications:
+  - title: "On the rigidity of Wasserstein contraction along heat flows"
+    status: "Preprint"
+    venue: ""
+    publication_info: "30 pages · 2025"
+    arxiv: "https://arxiv.org/abs/2505.02280"
    
   - title: "Synthetic notions of Ricci flow for metric measure spaces"
     coauthors:
