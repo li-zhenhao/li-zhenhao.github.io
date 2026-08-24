@@ -21,10 +21,11 @@
     <div class="site-shell">
       <header class="masthead" id="top">
         <nav class="nav" aria-label="Primary navigation">
+          <a href="{{ '/' | relative_url }}" aria-current="page">Home</a>
           {% if data.show_sections.research %}<a href="#research">Research</a>{% endif %}
-          {% if data.show_sections.publications %}<a href="#publications">Publications</a>{% endif %}
+          <a href="{{ '/publications.html' | relative_url }}">Publications</a>
           {% if data.show_sections.experience %}<a href="#experience">Experience</a>{% endif %}
-          {% if data.show_sections.activities %}<a href="#activities">Activities</a>{% endif %}
+          <a href="{{ '/activities.html' | relative_url }}">Activities</a>
         </nav>
       </header>
 
@@ -33,14 +34,10 @@
           <div class="intro-copy">
             {% if data.profile.field != empty %}<p class="eyebrow">{{ data.profile.field }}</p>{% endif %}
             <h1 id="page-title">{{ data.profile.name }}</h1>
-            {% if data.profile.introduction != empty %}
-              <div class="lead">{{ data.profile.introduction | markdownify }}</div>
-            {% endif %}
+            {% if data.profile.introduction != empty %}<div class="lead">{{ data.profile.introduction | markdownify }}</div>{% endif %}
           </div>
           <aside class="contact" aria-label="Profile details">
-            {% if data.profile.photo != empty %}
-              <img class="profile-photo" src="{{ data.profile.photo | relative_url }}" alt="{{ data.profile.photo_alt }}">
-            {% endif %}
+            {% if data.profile.photo != empty %}<img class="profile-photo" src="{{ data.profile.photo | relative_url }}" alt="{{ data.profile.photo_alt }}">{% endif %}
             {% if data.profile.affiliation != empty %}<p class="affiliation">{{ data.profile.affiliation }}</p>{% endif %}
             {% if data.profile.department != empty %}<p>{{ data.profile.department }}</p>{% endif %}
             {% if data.profile.location != empty %}<p>{{ data.profile.location }}</p>{% endif %}
@@ -48,17 +45,18 @@
               {% if data.profile.email != empty %}<a href="mailto:{{ data.profile.email }}">{{ data.profile.email }}</a>{% endif %}
               {% if data.profile.email2 != empty %}<a href="mailto:{{ data.profile.email2 }}">{{ data.profile.email2 }}</a>{% endif %}
             </div>
-            {% if data.profile.cv != empty %}
-              <p class="sidebar-cv"><a href="{{ data.profile.cv | relative_url }}">Curriculum vitae</a></p>
-            {% endif %}
+            {% if data.profile.cv != empty %}<p class="sidebar-cv"><a href="{{ data.profile.cv | relative_url }}">Curriculum vitae</a></p>{% endif %}
             {% if data.education.size > 0 %}
               <div class="sidebar-section">
                 <h2>Education</h2>
                 {% for item in data.education %}
                   <div class="education-item">
                     <h3>{{ item.degree }}</h3>
-                    {% if item.institution != empty %}<p>{{ item.institution }}</p>{% endif %}
-                    {% if item.years != empty %}<p class="education-years">{{ item.years }}</p>{% endif %}
+                    {% if item.institution and item.institution != empty %}<p>{{ item.institution }}</p>{% endif %}
+                    {% if item.supervisor and item.supervisor.name and item.supervisor.name != empty %}
+                      <p class="education-supervisor">Supervisor: {% if item.supervisor.url and item.supervisor.url != empty %}<a href="{{ item.supervisor.url }}">{{ item.supervisor.name }}</a>{% else %}{{ item.supervisor.name }}{% endif %}</p>
+                    {% endif %}
+                    {% if item.years and item.years != empty %}<p class="education-years">{{ item.years }}</p>{% endif %}
                   </div>
                 {% endfor %}
               </div>
@@ -68,154 +66,24 @@
 
         {% if data.show_sections.research %}
           <section class="section" id="research" aria-labelledby="research-title">
-            <div class="section-heading">
-              <p class="section-number">01</p>
-              <h2 id="research-title">Research</h2>
-            </div>
+            <div class="section-heading"><h2 id="research-title">Research</h2></div>
             <div class="research-grid">
-              {% for area in data.research %}
-                <article>
-                  <h3>{{ area.title }}</h3>
-                  <div>{{ area.description | markdownify }}</div>
-                </article>
-              {% endfor %}
-            </div>
-          </section>
-        {% endif %}
-
-        {% if data.show_sections.publications %}
-          <section class="section" id="publications" aria-labelledby="publications-title">
-            <div class="section-heading section-heading-plain">
-              <h2 id="publications-title">Publications</h2>
-            </div>
-            {% if data.publication_profiles.size > 0 %}
-              <p class="publication-profiles">
-                My research is also available on
-                {% for profile in data.publication_profiles %}
-                  <a href="{{ profile.url }}">{{ profile.name }}</a>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}
-                {% endfor %}.
-              </p>
-            {% endif %}
-            <div class="publication-list">
-              {% for publication in data.publications %}
-                <article class="publication">
-                  <div class="publication-body">
-                    <div class="publication-topline">
-                      {% if publication.status != empty %}<p class="status">{{ publication.status }}</p>{% endif %}
-                      {% if publication.coauthors.size > 0 %}
-                        <p class="coauthors">with
-                          {% for person in publication.coauthors %}
-                            {% if person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}
-                          {% endfor %}
-                        </p>
-                      {% endif %}
-                    </div>
-                    <h3><em>{{ publication.title }}</em></h3>
-                    <p class="venue">{{ publication.venue }}{% if publication.year != empty %} · {{ publication.year }}{% endif %}</p>
-                    {% if publication.summary != empty %}<div class="abstract">{{ publication.summary | markdownify }}</div>{% endif %}
-                    {% if publication.paper != empty or publication.arxiv != empty or publication.published != empty or publication.doi != empty %}
-                      <div class="paper-links" aria-label="Publication links">
-                        {% if publication.arxiv != empty %}<a href="{{ publication.arxiv }}">arXiv</a>{% endif %}
-                        {% if publication.published != empty %}<a href="{{ publication.published }}">Published version</a>{% elsif publication.doi != empty %}<a href="{{ publication.doi }}">Published version</a>{% endif %}
-                        {% if publication.paper != empty %}<a href="{{ publication.paper | relative_url }}">PDF</a>{% endif %}
-                      </div>
-                    {% endif %}
-                    {% if publication.image != empty %}
-                      <figure class="publication-figure">
-                        <img src="{{ publication.image | relative_url }}" alt="{{ publication.image_alt }}">
-                        {% if publication.image_caption != empty %}<figcaption>{{ publication.image_caption }}</figcaption>{% endif %}
-                      </figure>
-                    {% endif %}
-                    {% if publication.comment != empty or publication.corrections != empty or publication.related_work.size > 0 %}
-                      <details class="commentary-panel">
-                        <summary>Notes on this work</summary>
-                        <div class="commentary-content">
-                          {% if publication.comment != empty %}
-                            <div>
-                              <h4>Comment</h4>
-                              {{ publication.comment | markdownify }}
-                            </div>
-                          {% endif %}
-                          {% if publication.corrections != empty %}
-                            <div>
-                              <h4>Corrections and clarifications</h4>
-                              {{ publication.corrections | markdownify }}
-                            </div>
-                          {% endif %}
-                          {% if publication.related_work.size > 0 %}
-                            <div>
-                              <h4>Related work</h4>
-                              <ul class="related-list">
-                                {% for item in publication.related_work %}
-                                  <li>{% if item.url != empty %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</li>
-                                {% endfor %}
-                              </ul>
-                            </div>
-                          {% endif %}
-                        </div>
-                      </details>
-                    {% endif %}
-                  </div>
-                </article>
-              {% endfor %}
+              {% for area in data.research %}<article><h3>{{ area.title }}</h3><div>{{ area.description | markdownify }}</div></article>{% endfor %}
             </div>
           </section>
         {% endif %}
 
         {% if data.show_sections.experience %}
           <section class="section" id="experience" aria-labelledby="experience-title">
-            <div class="section-heading">
-              <p class="section-number">03</p>
-              <h2 id="experience-title">Experience</h2>
-            </div>
+            <div class="section-heading"><h2 id="experience-title">Experience</h2></div>
             <div class="timeline">
-              {% for item in data.experience %}
-                <article>
-                  <p class="years">{{ item.years }}</p>
-                  <div>
-                    <h3>{{ item.position }}</h3>
-                    <p>{{ item.institution }}</p>
-                  </div>
-                </article>
-              {% endfor %}
-            </div>
-          </section>
-        {% endif %}
-
-        {% if data.show_sections.activities %}
-          <section class="section" id="activities" aria-labelledby="activities-title">
-            <div class="section-heading">
-              <p class="section-number">04</p>
-              <h2 id="activities-title">Professional activities</h2>
-            </div>
-            <div class="activity-list">
-              {% if data.activities.refereeing.size > 0 %}
-                <article>
-                  <h3>Journal refereeing</h3>
-                  <div>{% for item in data.activities.refereeing %}<p>{{ item.journal }}{% if item.years != empty %} · {{ item.years }}{% endif %}</p>{% endfor %}</div>
-                </article>
-              {% endif %}
-              {% if data.activities.conferences.size > 0 %}
-                <article>
-                  <h3>Conferences and seminars</h3>
-                  <div>{% for item in data.activities.conferences %}<p><strong>{{ item.event }}</strong>{% if item.role != empty %} · {{ item.role }}{% endif %}{% if item.details != empty %}<br>{{ item.details }}{% endif %}</p>{% endfor %}</div>
-                </article>
-              {% endif %}
-              {% if data.activities.service.size > 0 %}
-                <article>
-                  <h3>Academic service</h3>
-                  <div>{% for item in data.activities.service %}<p><strong>{{ item.activity }}</strong>{% if item.details != empty %}<br>{{ item.details }}{% endif %}</p>{% endfor %}</div>
-                </article>
-              {% endif %}
+              {% for item in data.experience %}<article><p class="years">{{ item.years }}</p><div><h3>{{ item.position }}</h3><p>{{ item.institution }}</p></div></article>{% endfor %}
             </div>
           </section>
         {% endif %}
       </main>
 
-      <footer>
-        <p>© {{ 'now' | date: '%Y' }} {{ data.profile.name }}</p>
-        <a href="#top">Back to top ↑</a>
-      </footer>
+      <footer><p>© {{ 'now' | date: '%Y' }} {{ data.profile.name }}</p><a href="#top">Back to top ↑</a></footer>
     </div>
   </body>
 </html>
