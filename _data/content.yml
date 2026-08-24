@@ -117,7 +117,8 @@ publications:
     published: "https://link.springer.com/article/10.1007/s00526-023-02616-1"
     paper: ""
     summary: ""
-    comment: ""
+    comment: | 
+      Real title: BV curves in $1$-Wasserstein spaces I: a metric superposition principle à la Lisini
     related_work: []
  
   - title: "The globalization theorem for CD(K,N) on locally finite spaces"
