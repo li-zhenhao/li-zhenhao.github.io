@@ -310,10 +310,10 @@ h3 {
 .publication-number {
   color: var(--publication-number-color, var(--muted));
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 13pt;
+  font-weight: 700;
   line-height: 1.35;
-  margin-right: 8px;
+  margin-right: 6px;
 }
 
 .publication-line {
@@ -336,7 +336,7 @@ h3 {
 
 .status {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 12pt;
   font-weight: 400;
   letter-spacing: 0.025em;
 }
@@ -368,8 +368,14 @@ h3 {
 
 .venue {
   color: #9d4b32;
-  font-size: 13px;
+  font-size: 13pt;
   font-weight: 700;
+}
+
+.publication-info {
+  color: var(--ink);
+  font-size: 13pt;
+  font-weight: 400;
 }
 
 .publication-title-line h2 {
@@ -428,7 +434,7 @@ h3 {
   color: var(--navy);
   cursor: pointer;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 13pt;
   font-weight: 400;
   letter-spacing: 0;
   list-style: none;
@@ -458,7 +464,7 @@ h3 {
   background: transparent;
   color: #46504e;
   display: block;
-  font-size: 13px;
+  font-size: 13pt;
   padding: 6px 0 2px;
 }
 
@@ -479,7 +485,7 @@ h3 {
 .commentary-content p,
 .related-list {
   color: #46504e;
-  font-size: 13px;
+  font-size: 13pt;
 }
 
 .commentary-content p {
