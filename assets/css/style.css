@@ -300,6 +300,8 @@ h3 {
 
 .publication-list {
   border-top: 1px solid var(--ink);
+  margin-right: 150px;
+  overflow: visible;
 }
 
 .publication {
@@ -438,7 +440,7 @@ h3 {
 .commentary-panel:not([open]) {
   bottom: 2px;
   position: absolute;
-  right: -125px;
+  right: -140px;
 }
 
 .commentary-panel[open] {
