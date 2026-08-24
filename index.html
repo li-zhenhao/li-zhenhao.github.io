@@ -1,0 +1,184 @@
+---
+---
+{% assign data = site.data.content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Academic homepage of {{ data.profile.name }}">
+    <title>{{ data.profile.name }} | {{ data.profile.field }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
+        options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="masthead" id="top">
+        <a class="wordmark" href="#top" aria-label="{{ data.profile.name }}, home">{{ data.profile.name | slice: 0 }}{{ data.profile.name | split: ' ' | last | slice: 0 }}</a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#activities">Activities</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow">{{ data.profile.field }}</p>
+            <h1 id="page-title">{{ data.profile.name }}</h1>
+            <div class="lead">{{ data.profile.introduction | markdownify }}</div>
+          </div>
+          <aside class="contact" aria-label="Contact information">
+            {% if data.profile.photo != empty %}
+              <img class="profile-photo" src="{{ data.profile.photo | relative_url }}" alt="{{ data.profile.photo_alt }}">
+            {% endif %}
+            <p>{{ data.profile.affiliation }}</p>
+            <p>{{ data.profile.department }}</p>
+            <p>{{ data.profile.location }}</p>
+            <a href="mailto:{{ data.profile.email }}">{{ data.profile.email }}</a>
+            <div class="contact-links">
+              <a href="#publications">Publications</a>
+              {% if data.profile.cv != empty %}
+                <a href="{{ data.profile.cv | relative_url }}">CV</a>
+              {% endif %}
+            </div>
+          </aside>
+        </section>
+
+        <section class="section" id="research" aria-labelledby="research-title">
+          <div class="section-heading">
+            <p class="section-number">01</p>
+            <h2 id="research-title">Research</h2>
+          </div>
+          <div class="research-grid">
+            {% for area in data.research %}
+              <article>
+                <h3>{{ area.title }}</h3>
+                <div>{{ area.description | markdownify }}</div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="section" id="publications" aria-labelledby="publications-title">
+          <div class="section-heading publication-heading">
+            <div>
+              <p class="section-number">02</p>
+              <h2 id="publications-title">Publications</h2>
+            </div>
+            <p>Comments, corrections, and related work can be expanded below each publication.</p>
+          </div>
+          <div class="publication-list">
+            {% for publication in data.publications %}
+              <article class="publication">
+                <p class="publication-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</p>
+                <div class="publication-body">
+                  <div class="publication-topline">
+                    <p class="status">{{ publication.status }}</p>
+                    <p class="venue">{{ publication.venue }} · {{ publication.year }}</p>
+                  </div>
+                  <h3>{{ publication.title }}</h3>
+                  <p class="authors">{{ publication.authors }}</p>
+                  <div class="abstract">{{ publication.summary | markdownify }}</div>
+                  <div class="paper-links" aria-label="Publication links">
+                    {% if publication.paper != empty %}<a href="{{ publication.paper | relative_url }}">Paper</a>{% endif %}
+                    {% if publication.arxiv != empty %}<a href="{{ publication.arxiv }}">arXiv</a>{% endif %}
+                    {% if publication.doi != empty %}<a href="{{ publication.doi }}">DOI</a>{% endif %}
+                  </div>
+                  {% if publication.image != empty %}
+                    <figure class="publication-figure">
+                      <img src="{{ publication.image | relative_url }}" alt="{{ publication.image_alt }}">
+                      {% if publication.image_caption != empty %}<figcaption>{{ publication.image_caption }}</figcaption>{% endif %}
+                    </figure>
+                  {% endif %}
+                  {% if publication.comment != empty or publication.corrections != empty or publication.related_work.size > 0 %}
+                    <details class="commentary-panel">
+                      <summary>Notes on this work</summary>
+                      <div class="commentary-content">
+                        {% if publication.comment != empty %}
+                          <div>
+                            <h4>Comment</h4>
+                            {{ publication.comment | markdownify }}
+                          </div>
+                        {% endif %}
+                        {% if publication.corrections != empty %}
+                          <div>
+                            <h4>Corrections and clarifications</h4>
+                            {{ publication.corrections | markdownify }}
+                          </div>
+                        {% endif %}
+                        {% if publication.related_work.size > 0 %}
+                          <div>
+                            <h4>Related work</h4>
+                            <ul class="related-list">
+                              {% for item in publication.related_work %}
+                                <li>{% if item.url != empty %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </details>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="section" id="experience" aria-labelledby="experience-title">
+          <div class="section-heading">
+            <p class="section-number">03</p>
+            <h2 id="experience-title">Experience</h2>
+          </div>
+          <div class="timeline">
+            {% for item in data.experience %}
+              <article>
+                <p class="years">{{ item.years }}</p>
+                <div>
+                  <h3>{{ item.position }}</h3>
+                  <p>{{ item.institution }}</p>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="section" id="activities" aria-labelledby="activities-title">
+          <div class="section-heading">
+            <p class="section-number">04</p>
+            <h2 id="activities-title">Professional activities</h2>
+          </div>
+          <div class="activity-list">
+            <article>
+              <h3>Journal refereeing</h3>
+              <div>{% for item in data.activities.refereeing %}<p>{{ item.journal }} · {{ item.years }}</p>{% endfor %}</div>
+            </article>
+            <article>
+              <h3>Conferences and seminars</h3>
+              <div>{% for item in data.activities.conferences %}<p><strong>{{ item.event }}</strong> · {{ item.role }}<br>{{ item.details }}</p>{% endfor %}</div>
+            </article>
+            <article>
+              <h3>Academic service</h3>
+              <div>{% for item in data.activities.service %}<p><strong>{{ item.activity }}</strong><br>{{ item.details }}</p>{% endfor %}</div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>© {{ 'now' | date: '%Y' }} {{ data.profile.name }}</p>
+        <a href="#top">Back to top ↑</a>
+      </footer>
+    </div>
+  </body>
+</html>
+

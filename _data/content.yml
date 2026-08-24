@@ -1,0 +1,97 @@
+# This is the only file you normally need to edit.
+
+profile:
+  name: "Zhenhao Li"
+  field: "Mathematics"
+  affiliation: "[Current affiliation]"
+  department: "[Department]"
+  location: "[City, country]"
+  email: "your.email@university.edu"
+  introduction: |
+    I work in metric geometry, optimal transport, and analysis on
+    metric measure spaces.
+  photo: ""
+  photo_alt: "Portrait of Zhenhao Li"
+  cv: ""
+
+research:
+  - title: "Metric and synthetic geometry"
+    description: |
+      Rigidity questions, rectifiability, and geometric structure in
+      nonsmooth spaces.
+
+  - title: "Optimal transport and curvature"
+    description: |
+      Transport-based formulations of curvature and their static and
+      time-dependent consequences.
+
+  - title: "Analysis on metric measure spaces"
+    description: |
+      Lipschitz functions, derivations, superposition principles, and
+      weak differential structures.
+
+publications:
+  - title: "[Publication title]"
+    authors: "Zhenhao Li and [coauthors]"
+    venue: "[Journal or preprint server]"
+    year: "[year]"
+    status: "Preprint"
+    paper: ""
+    arxiv: ""
+    doi: ""
+    summary: |
+      Add a short description of the central result and why it matters.
+    comment: |
+      Add your own mathematical comments, motivation, or a subtle point
+      in the proof here.
+    corrections: |
+      Add an erratum or clarification here. Leave this field empty when
+      it is not needed.
+    image: ""
+    image_alt: ""
+    image_caption: ""
+    related_work:
+      - title: "[Related paper, slides, or ongoing project]"
+        url: ""
+
+  - title: "[Another publication title]"
+    authors: "Zhenhao Li and [coauthors]"
+    venue: "[Journal or preprint server]"
+    year: "[year]"
+    status: "Work in progress"
+    paper: ""
+    arxiv: ""
+    doi: ""
+    summary: |
+      Add a short description here.
+    comment: |
+      Add your comments here.
+    corrections: ""
+    image: ""
+    image_alt: ""
+    image_caption: ""
+    related_work: []
+
+experience:
+  - years: "20xx–present"
+    position: "[Current position]"
+    institution: "[Department, University or Institute]"
+
+  - years: "20xx–20xx"
+    position: "[Previous position or degree]"
+    institution: "[Department, University or Institute]"
+
+activities:
+  refereeing:
+    - journal: "[Journal name]"
+      years: "[year]"
+
+  conferences:
+    - event: "[Conference or seminar]"
+      role: "[Invited talk / contributed talk / organiser]"
+      details: "[Place, talk title, month year]"
+
+  service:
+    - activity: "[Academic service]"
+      details: "[Role and year]"
+
