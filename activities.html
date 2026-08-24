@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Professional activities of {{ data.profile.name }}">
     <title>Professional activities | {{ data.profile.name }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=5">
   </head>
   <body>
     <div class="site-shell">
@@ -26,9 +26,9 @@
         <section class="section standalone-section" aria-labelledby="activities-title">
           <div class="section-heading"><h1 class="page-title" id="activities-title">Professional activities</h1></div>
           <div class="activity-list">
-            {% if data.activities.refereeing.size > 0 %}<article><h2>Journal refereeing</h2><div>{% for item in data.activities.refereeing %}<p>{{ item.journal }}{% if item.years and item.years != empty %} · {{ item.years }}{% endif %}</p>{% endfor %}</div></article>{% endif %}
-            {% if data.activities.conferences.size > 0 %}<article><h2>Conferences and seminars</h2><div>{% for item in data.activities.conferences %}<p><strong>{{ item.event }}</strong>{% if item.role and item.role != empty %} · {{ item.role }}{% endif %}{% if item.details and item.details != empty %}<br>{{ item.details }}{% endif %}</p>{% endfor %}</div></article>{% endif %}
-            {% if data.activities.service.size > 0 %}<article><h2>Academic service</h2><div>{% for item in data.activities.service %}<p><strong>{{ item.activity }}</strong>{% if item.details and item.details != empty %}<br>{{ item.details }}{% endif %}</p>{% endfor %}</div></article>{% endif %}
+            {% if data.activities.refereeing.size > 0 %}<article><h2 class="activity-label">Journal refereeing</h2><div>{% for item in data.activities.refereeing %}<p>{{ item.journal }}{% if item.years and item.years != empty %} · {{ item.years }}{% endif %}</p>{% endfor %}</div></article>{% endif %}
+            {% if data.activities.conferences.size > 0 %}<article><h2 class="activity-label">Conferences and seminars</h2><div>{% for item in data.activities.conferences %}<p><strong>{{ item.event }}</strong>{% if item.role and item.role != empty %} · {{ item.role }}{% endif %}{% if item.details and item.details != empty %}<br>{{ item.details }}{% endif %}</p>{% endfor %}</div></article>{% endif %}
+            {% if data.activities.service.size > 0 %}<article><h2 class="activity-label">Academic service</h2><div>{% for item in data.activities.service %}<p><strong>{{ item.activity }}</strong>{% if item.details and item.details != empty %}<br>{{ item.details }}{% endif %}</p>{% endfor %}</div></article>{% endif %}
           </div>
         </section>
       </main>
