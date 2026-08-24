@@ -61,7 +61,7 @@ publication_profiles:
     url: "https://arxiv.org/a/li_z_33.html"
   - name: "Google Scholar"
     url: "https://scholar.google.com/citations?user=k0apv5IAAAAJ&hl=en"
-  - name: "Google Scholar"
+  - name: "Zbmath"
     url: "https://zbmath.org/authors/li.zhenhao"
 
 # Publication colors
@@ -127,6 +127,17 @@ publications:
     arxiv: "https://arxiv.org/abs/2212.07962"
     published: "https://link.springer.com/article/10.1007/s10231-023-01352-9"
 other_writing:
+  - title: "Optimal transport and (dynamic) synthetic curvature bounds on metric measure spaces"
+    venue: ""
+    volume: ""
+    publication_info: "184 pages · 2026 Feb."
+    status: ""
+    arxiv: ""
+    published: "Publikationen an der Universität Bielefeld"
+    doi: "https://pub.uni-bielefeld.de/record/3014278"
+    paper: "
+    comment: |
+      Doctoral thesis, Defense date Feb. 05 2026
   - title: "Synthetic approaches to Ricci flows"
     venue: ""
     volume: ""
@@ -136,8 +147,7 @@ other_writing:
     arxiv: "https://arxiv.org/abs/2511.11477"
     published: ""
     doi: ""
-    paper: ""
-
+    paper: "
     comment: |
       SPP 2026 report, with Matthias Erbar, Marco Flaim, Eric Hupp, Timo Schultz, Karl-Theodor Sturm
 
