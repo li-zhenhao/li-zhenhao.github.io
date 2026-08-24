@@ -23,15 +23,21 @@ education:
   - degree: "Ph.D. in Mathematics"
     institution: "Bielefeld University"
     years: "10.2021-02.2026"
-
+    supervisor:
+      name: "Matthias Erbar"
+      url: "https://www.uni-bielefeld.de/fakultaeten/mathematik/ag/erbar"
   - degree: "M.Sc. in Mathematics"
     institution: "University Bonn"
     years: "10.2018-08.2021"
-
+    supervisor:
+      name: "Karl-Theodor Sturm"
+      url: "https://wt.iam.uni-bonn.de/sturm/home"
   - degree: "B.Sc. in Mathematics"
     institution: "University of Science and Technology of China"
     years: "09.2014-06.2018"
-
+    supervisor:
+      name: "Zuoqin Wang"
+      url: "https://staff.ustc.edu.cn/~wangzuoq/"
 research:
   - title: "Metric and synthetic geometry"
     description: |
