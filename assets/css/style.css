@@ -444,7 +444,9 @@ h3 {
 .commentary-panel[open] {
   margin-top: 3px;
 }
-
+.publication-list {
+  overflow: visible;
+}
 .commentary-panel summary {
   color: var(--muted);
   cursor: pointer;
