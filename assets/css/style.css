@@ -438,7 +438,7 @@ h3 {
 .commentary-panel:not([open]) {
   bottom: 2px;
   position: absolute;
-  right: 0;
+  right: -125px;
 }
 
 .commentary-panel[open] {
