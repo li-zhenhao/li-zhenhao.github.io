@@ -124,8 +124,6 @@ publication_colors:
     published: "https://link.springer.com/article/10.1007/s10231-023-01352-9"
 other_writing:
   - title: "Synthetic approaches to Ricci flows"
-    coauthors:
-      - name: "Coauthor Name"
     venue: ""
     volume: ""
     pages: ""
@@ -133,7 +131,7 @@ other_writing:
     status: ""
 
     arxiv: "https://arxiv.org/abs/2511.11477"
-    published: "https://example.com/article"
+    published: ""
     doi: ""
     paper: ""
 
