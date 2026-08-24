@@ -66,6 +66,13 @@ publication_colors:
 
 # Publication list
 publications:  
+  - title: "On the rigidity of Wasserstein contraction along heat flows"
+    venue: ""
+    year: "2025"
+    status: "Preprint"
+    arxiv: "https://arxiv.org/abs/2505.02280"
+    published: ""
+   
   - title: "Synthetic notions of Ricci flow for metric measure spaces"
 
     coauthors:
@@ -93,30 +100,28 @@ publications:
     related_work: []
 
   - title: "Absolutely continuous and BV-curves in 1-Wasserstein spaces"
-
     coauthors:
       - name: "Ehsan Abedi"
         url: ""
-
       - name: "Timo Schultz"
         url: ""
-
     venue: "Calculus of Variations and Partial Differential Equations, 34 pages"
     year: "2024"
     status: "Published"
-
     arxiv: "https://arxiv.org/abs/2209.04268"
     published: "https://link.springer.com/article/10.1007/s00526-023-02616-1"
     paper: ""
-
     summary: ""
     comment: ""
-    corrections: ""
-    image: ""
-    image_alt: ""
-    image_caption: ""
     related_work: []
-    
+ 
+  - title: "The globalization theorem for CD(K,N) on locally finite spaces"
+    venue: " Annali di Matematica Pura ed Applicata, 21 pages"
+    year: "2024"
+    status: "Published in"
+    arxiv: "https://arxiv.org/abs/2212.07962"
+    published: "https://link.springer.com/article/10.1007/s10231-023-01352-9"
+   
 experience:
   - years: "20xx–present"
     position: "[Current position]"
