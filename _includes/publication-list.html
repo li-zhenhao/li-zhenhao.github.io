@@ -131,46 +131,39 @@
       <div class="publication-line publication-title-line">
         <h2><em>{{ publication.title }}</em></h2>
 
-        {% if has_comment or has_corrections or has_related_work %}
-          {% assign comment_id = publication.title | slugify | append: "-comment" %}
-          <input class="commentary-toggle" id="{{ comment_id }}" type="checkbox">
+        {% if publication.coauthors and publication.coauthors.size > 0 %}
+          <p class="coauthors">
+            with
+            {% for person in publication.coauthors %}
+              <span class="coauthor-name">
+                {% if person.url and person.url != empty %}
+                  <a href="{{ person.url }}">{{ person.name }}</a>
+                {% else %}
+                  {{ person.name }}
+                {% endif %}
+              </span>
+              {% unless forloop.last %}
+                {% if forloop.rindex == 2 %}
+                  and
+                {% else %}
+                  ,
+                {% endif %}
+              {% endunless %}
+            {% endfor %}
+          </p>
         {% endif %}
+      </div>
 
-        <div class="publication-side">
-          {% if publication.coauthors and publication.coauthors.size > 0 %}
-            <p class="coauthors">
-              with
-              {% for person in publication.coauthors %}
-                <span class="coauthor-name">
-                  {% if person.url and person.url != empty %}
-                    <a href="{{ person.url }}">{{ person.name }}</a>
-                  {% else %}
-                    {{ person.name }}
-                  {% endif %}
-                </span>
-                {% unless forloop.last %}
-                  {% if forloop.rindex == 2 %}
-                    and
-                  {% else %}
-                    ,
-                  {% endif %}
-                {% endunless %}
-              {% endfor %}
-            </p>
-          {% endif %}
+      {% if has_comment or has_corrections or has_related_work %}
+        <details class="commentary-panel">
+          <summary>
+            {% if has_comment %}
+              Comment
+            {% else %}
+              Notes
+            {% endif %}
+          </summary>
 
-          {% if has_comment or has_corrections or has_related_work %}
-            <label class="commentary-toggle-label" for="{{ comment_id }}">
-              {% if has_comment %}
-                Comment
-              {% else %}
-                Notes
-              {% endif %}
-            </label>
-          {% endif %}
-        </div>
-
-        {% if has_comment or has_corrections or has_related_work %}
           <div class="commentary-content">
             {% if has_comment %}
               <div>
@@ -202,8 +195,8 @@
               </div>
             {% endif %}
           </div>
-        {% endif %}
-      </div>
+        </details>
+      {% endif %}
     </article>
   {% endfor %}
 </div>
