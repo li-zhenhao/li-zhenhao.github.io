@@ -304,7 +304,7 @@ h3 {
 
 .publication {
   border-bottom: 1px solid var(--line);
-  padding: 6px 0 7px;
+  padding: 10px 0 2px;
 }
 
 .publication-number {
@@ -373,11 +373,15 @@ h3 {
 }
 
 .publication-info {
-  color: var(--ink);
-  font-size: 13px;
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
   font-weight: 400;
+  letter-spacing: 0.025em;
 }
-
+.venue {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .publication-title-line h2 {
   color: var(--publication-title-color, var(--ink));
   font-size: 18px;
