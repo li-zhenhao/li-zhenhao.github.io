@@ -52,18 +52,39 @@
         {% if publication.coauthors and publication.coauthors.size > 0 %}
           <p class="coauthors">with {% for person in publication.coauthors %}<span class="coauthor-name">{% if person.url and person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}</span>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}</p>
         {% endif %}
+
+        {% if has_comment or has_corrections or has_related_work %}
+          {% assign comment_id = publication.title | slugify | append: "-comment" %}
+          <button class="commentary-toggle" type="button" aria-controls="{{ comment_id }}" aria-expanded="false">
+            {% if has_comment %}Comment{% else %}Notes{% endif %}<span aria-hidden="true">+</span>
+          </button>
+        {% endif %}
       </div>
 
       {% if has_comment or has_corrections or has_related_work %}
-        <details class="commentary-panel">
-          <summary>{% if has_comment %}Comment{% else %}Notes{% endif %}</summary>
-          <div class="commentary-content">
-            {% if has_comment %}<div>{{ publication.comment | markdownify }}</div>{% endif %}
-            {% if has_corrections %}<div><h3>Corrections and clarifications</h3>{{ publication.corrections | markdownify }}</div>{% endif %}
-            {% if has_related_work %}<div><h3>Related work</h3><ul class="related-list">{% for item in publication.related_work %}<li>{% if item.url and item.url != empty %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</li>{% endfor %}</ul></div>{% endif %}
-          </div>
-        </details>
+        <div class="commentary-content" id="{{ comment_id }}" hidden>
+          {% if has_comment %}<div>{{ publication.comment | markdownify }}</div>{% endif %}
+          {% if has_corrections %}<div><h3>Corrections and clarifications</h3>{{ publication.corrections | markdownify }}</div>{% endif %}
+          {% if has_related_work %}<div><h3>Related work</h3><ul class="related-list">{% for item in publication.related_work %}<li>{% if item.url and item.url != empty %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</li>{% endfor %}</ul></div>{% endif %}
+        </div>
       {% endif %}
     </article>
   {% endfor %}
 </div>
+
+<script>
+  if (!window.publicationCommentToggleBound) {
+    window.publicationCommentToggleBound = true;
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".commentary-toggle");
+      if (!button) return;
+
+      var content = document.getElementById(button.getAttribute("aria-controls"));
+      var isOpen = button.getAttribute("aria-expanded") === "true";
+
+      button.setAttribute("aria-expanded", String(!isOpen));
+      button.querySelector("span").textContent = isOpen ? "+" : "−";
+      content.hidden = isOpen;
+    });
+  }
+</script>
