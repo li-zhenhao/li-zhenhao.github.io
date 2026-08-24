@@ -13,15 +13,17 @@ profile:
   email: "lzhkokiko(at)gmail.com"
   email2: "zhenhao.li(at)math.uni-bielefeld.de"
   introduction: |
-    I work in metric geometry, optimal transport, and analysis on
-    metric measure spaces.
+    I am currently a research assistant (Wissenschaftlicher Mitarbeiter) at Bielefeld University, working in the group of Prof. Matthias Erbar.
+
+    My research interests are optimal transport and geometric analysis on metric measure spaces. 
+    Key words for my current and past works include synthetic curvature bounds, rigidity phenomena, and superposition principles.
   photo: ""
   photo_alt: ""
   cv: ""
 
 education:
   - degree: "Ph.D. in Mathematics"
-    institution: "Bielefeld University"
+    institution: "University Bielefeld"
     years: "10.2021-02.2026"
     supervisor:
       name: "Matthias Erbar"
@@ -57,9 +59,10 @@ research:
 publication_profiles:
   - name: "arXiv"
     url: "https://arxiv.org/a/li_z_33.html"
-
   - name: "Google Scholar"
     url: "https://scholar.google.com/citations?user=k0apv5IAAAAJ&hl=en"
+  - name: "Google Scholar"
+    url: "https://zbmath.org/authors/li.zhenhao"
 
 # Publication colors
 publication_colors:
@@ -126,8 +129,7 @@ other_writing:
   - title: "Synthetic approaches to Ricci flows"
     venue: ""
     volume: ""
-    pages: ""
-    year: "2025"
+    publication_info: "2025"
     status: ""
 
     arxiv: "https://arxiv.org/abs/2511.11477"
