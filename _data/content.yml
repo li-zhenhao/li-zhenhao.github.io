@@ -1,17 +1,22 @@
-# This is the only file you normally need to edit.
+show_sections:
+  research: false
+  publications: true
+  experience: false
+  activities: true
 
 profile:
-  name: "Zhenhao Li"
+  name: "Li, Zhenhao 李震昊"
   field: "Mathematics"
-  affiliation: "[Current affiliation]"
-  department: "[Department]"
-  location: "[City, country]"
-  email: "your.email@university.edu"
+  affiliation: "Bielefeld University"
+  department: ""
+  location: ""
+  email: "lzhkokiko(at)gmail.com"
+  email2: "zhenhao.li(at)math.uni-bielefeld.de"
   introduction: |
     I work in metric geometry, optimal transport, and analysis on
     metric measure spaces.
   photo: ""
-  photo_alt: "Portrait of Zhenhao Li"
+  photo_alt: ""
   cv: ""
 
 research:
@@ -31,37 +36,48 @@ research:
       weak differential structures.
 
 publications:
-  - title: "[Publication title]"
-    authors: "Zhenhao Li and [coauthors]"
-    venue: "[Journal or preprint server]"
-    year: "[year]"
-    status: "Preprint"
-    paper: ""
-    arxiv: ""
-    doi: ""
-    summary: |
-      Add a short description of the central result and why it matters.
-    comment: |
-      Add your own mathematical comments, motivation, or a subtle point
-      in the proof here.
-    corrections: |
-      Add an erratum or clarification here. Leave this field empty when
-      it is not needed.
-    image: ""
-    image_alt: ""
-    image_caption: ""
-    related_work:
-      - title: "[Related paper, slides, or ongoing project]"
-        url: ""
+publication_profiles:
+  - name: "arXiv"
+    url: "https://arxiv.org/a/li_z_33.html"
+  - name: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=k0apv5IAAAAJ&hl=en"
 
-  - title: "[Another publication title]"
-    authors: "Zhenhao Li and [coauthors]"
-    venue: "[Journal or preprint server]"
-    year: "[year]"
-    status: "Work in progress"
+#publication list 
+ publications:
+  - title: "Synthetic notions of Ricci flow for metric measure spaces"
+
+    coauthors:
+      - name: "Matthias Erbar"
+        url: "[]"
+
+      - name: "Timo Schultz"
+        url: "[]"
+
+    venue: "Journal of Functional Analysis"
+    year: "2026"
+    status: "Accepted for Publication"
+
+    arxiv: "https://arxiv.org/abs/2501.07175"
+    published: "[]"
     paper: ""
-    arxiv: ""
-    doi: ""
+    summary: |
+    comment: |
+    corrections: ""
+    related_work: []
+
+  - title: "Absolutely continuous and BV-curves in 1-Wasserstein spaces"
+    coauthors:
+      - name: "Ehsan Abedi"
+        url: "[]"
+
+      - name: "Timo Schultz"
+        url: "[]"
+    venue: " Calculus of Variations and Partial Differential Equations"
+    year: "2024"
+    status: ""
+    paper: ""
+    arxiv: "https://arxiv.org/html/2209.04268v2"
+    doi: "https://link.springer.com/article/10.1007/s00526-023-02616-1"
     summary: |
       Add a short description here.
     comment: |
@@ -83,8 +99,8 @@ experience:
 
 activities:
   refereeing:
-    - journal: "[Journal name]"
-      years: "[year]"
+    - journal: "Journal of Functional Analysis"
+      years: ""
 
   conferences:
     - event: "[Conference or seminar]"
