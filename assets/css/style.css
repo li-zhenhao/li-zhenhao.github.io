@@ -49,7 +49,7 @@ summary:focus-visible {
 
 .site-shell {
   margin: 0 auto;
-  max-width: 1080px;
+  max-width: 1180px;
   padding: 0 32px;
 }
 
@@ -300,7 +300,7 @@ h3 {
 
 .publication-list {
   border-top: 1px solid var(--ink);
-  margin-right: 150px;
+  margin-right: 120px;
   overflow: visible;
 }
 
@@ -440,7 +440,7 @@ h3 {
 .commentary-panel:not([open]) {
   bottom: 2px;
   position: absolute;
-  right: -140px;
+  right: -110px;
 }
 
 .commentary-panel[open] {
