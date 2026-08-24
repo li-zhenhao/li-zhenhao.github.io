@@ -35,59 +35,65 @@ research:
       Lipschitz functions, derivations, superposition principles, and
       weak differential structures.
 
-publications:
 publication_profiles:
   - name: "arXiv"
     url: "https://arxiv.org/a/li_z_33.html"
+
   - name: "Google Scholar"
     url: "https://scholar.google.com/citations?user=k0apv5IAAAAJ&hl=en"
 
-#publication list 
- publications:
+# Publication list
+publications:
   - title: "Synthetic notions of Ricci flow for metric measure spaces"
 
     coauthors:
       - name: "Matthias Erbar"
-        url: "[]"
+        url: ""
 
       - name: "Timo Schultz"
-        url: "[]"
+        url: ""
 
     venue: "Journal of Functional Analysis"
     year: "2026"
-    status: "Accepted for Publication"
+    status: "Accepted for publication"
 
     arxiv: "https://arxiv.org/abs/2501.07175"
-    published: "[]"
+    published: ""
     paper: ""
-    summary: |
-    comment: |
-    corrections: ""
-    related_work: []
 
-  - title: "Absolutely continuous and BV-curves in 1-Wasserstein spaces"
-    coauthors:
-      - name: "Ehsan Abedi"
-        url: "[]"
-
-      - name: "Timo Schultz"
-        url: "[]"
-    venue: " Calculus of Variations and Partial Differential Equations"
-    year: "2024"
-    status: ""
-    paper: ""
-    arxiv: "https://arxiv.org/html/2209.04268v2"
-    doi: "https://link.springer.com/article/10.1007/s00526-023-02616-1"
-    summary: |
-      Add a short description here.
-    comment: |
-      Add your comments here.
+    summary: ""
+    comment: ""
     corrections: ""
     image: ""
     image_alt: ""
     image_caption: ""
     related_work: []
 
+  - title: "Absolutely continuous and BV-curves in 1-Wasserstein spaces"
+
+    coauthors:
+      - name: "Ehsan Abedi"
+        url: ""
+
+      - name: "Timo Schultz"
+        url: ""
+
+    venue: "Calculus of Variations and Partial Differential Equations"
+    year: "2024"
+    status: "Published"
+
+    arxiv: "https://arxiv.org/abs/2209.04268"
+    published: "https://link.springer.com/article/10.1007/s00526-023-02616-1"
+    paper: ""
+
+    summary: ""
+    comment: ""
+    corrections: ""
+    image: ""
+    image_alt: ""
+    image_caption: ""
+    related_work: []
+    
 experience:
   - years: "20xx–present"
     position: "[Current position]"
