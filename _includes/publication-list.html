@@ -52,16 +52,14 @@
         {% if publication.coauthors and publication.coauthors.size > 0 %}
           <p class="coauthors">with {% for person in publication.coauthors %}<span class="coauthor-name">{% if person.url and person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}</span>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}</p>
         {% endif %}
-
-        {% if has_comment or has_corrections or has_related_work %}
-          {% assign comment_id = publication.title | slugify | append: "-comment" %}
-          <button class="commentary-toggle" type="button" aria-controls="{{ comment_id }}" aria-expanded="false">
-            {% if has_comment %}Comment{% else %}Notes{% endif %}<span aria-hidden="true">+</span>
-          </button>
-        {% endif %}
       </div>
 
       {% if has_comment or has_corrections or has_related_work %}
+        {% assign comment_id = publication.title | slugify | append: "-comment" %}
+        <button class="commentary-toggle" type="button" aria-controls="{{ comment_id }}" aria-expanded="false">
+          {% if has_comment %}Comment{% else %}Notes{% endif %}<span aria-hidden="true">+</span>
+        </button>
+
         <div class="commentary-content" id="{{ comment_id }}" hidden>
           {% if has_comment %}<div>{{ publication.comment | markdownify }}</div>{% endif %}
           {% if has_corrections %}<div><h3>Corrections and clarifications</h3>{{ publication.corrections | markdownify }}</div>{% endif %}
