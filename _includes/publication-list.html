@@ -1,0 +1,57 @@
+<div class="publication-list">
+  {% for publication in include.items %}
+    {% assign number_color = publication.number_color | default: data.publication_colors.number %}
+    {% assign title_color = publication.title_color | default: data.publication_colors.title %}
+    {% assign coauthors_color = publication.coauthors_color | default: data.publication_colors.coauthors %}
+    {% assign has_arxiv = false %}
+    {% assign has_published = false %}
+    {% assign has_doi = false %}
+    {% assign has_paper = false %}
+    {% assign has_comment = false %}
+    {% assign has_corrections = false %}
+    {% assign has_related_work = false %}
+    {% if publication.arxiv and publication.arxiv != empty %}{% assign has_arxiv = true %}{% endif %}
+    {% if publication.published and publication.published != empty %}{% assign has_published = true %}{% endif %}
+    {% if publication.doi and publication.doi != empty %}{% assign has_doi = true %}{% endif %}
+    {% if publication.paper and publication.paper != empty %}{% assign has_paper = true %}{% endif %}
+    {% if publication.comment and publication.comment != empty %}{% assign has_comment = true %}{% endif %}
+    {% if publication.corrections and publication.corrections != empty %}{% assign has_corrections = true %}{% endif %}
+    {% if publication.related_work and publication.related_work.size > 0 %}{% assign has_related_work = true %}{% endif %}
+
+    <article class="publication" style="{% if number_color and number_color != empty %}--publication-number-color: {{ number_color }};{% endif %}{% if title_color and title_color != empty %}--publication-title-color: {{ title_color }};{% endif %}{% if coauthors_color and coauthors_color != empty %}--publication-coauthors-color: {{ coauthors_color }};{% endif %}">
+      <div class="publication-line publication-meta-line">
+        <p class="publication-citation">
+          <span class="publication-number">{% if publication.number and publication.number != empty %}{{ publication.number }}{% else %}{{ forloop.rindex }}{% endif %}.</span>
+          {% if publication.status and publication.status != empty %}<span class="status">{{ publication.status }}</span>{% endif %}
+          {% if publication.status and publication.status != empty and publication.venue and publication.venue != empty %}<span class="citation-separator">·</span>{% endif %}
+          {% if publication.venue and publication.venue != empty %}<span class="venue">{{ publication.venue }}{% if publication.volume and publication.volume != empty %} {{ publication.volume }}{% endif %}{% if publication.pages and publication.pages != empty %}, {{ publication.pages }}{% endif %}{% if publication.year and publication.year != empty %} · {{ publication.year }}{% endif %}</span>{% endif %}
+        </p>
+        {% if has_arxiv or has_published or has_doi or has_paper %}
+          <div class="paper-links" aria-label="Publication links">
+            {% if has_arxiv %}<a class="link-arxiv" href="{{ publication.arxiv }}">arXiv</a>{% endif %}
+            {% if has_published %}<a class="link-published" href="{{ publication.published }}">Published version</a>{% elsif has_doi %}<a class="link-published" href="{{ publication.doi }}">Published version</a>{% endif %}
+            {% if has_paper %}<a class="link-pdf" href="{{ publication.paper | relative_url }}">PDF</a>{% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="publication-line publication-title-line">
+        <h2><em>{{ publication.title }}</em></h2>
+        {% if publication.coauthors and publication.coauthors.size > 0 %}
+          <p class="coauthors">with {% for person in publication.coauthors %}<span class="coauthor-name">{% if person.url and person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}</span>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}</p>
+        {% endif %}
+      </div>
+
+      {% if has_comment or has_corrections or has_related_work %}
+        <details class="commentary-panel">
+          <summary>{% if has_comment %}Comment{% else %}Notes{% endif %}</summary>
+          <div class="commentary-content">
+            {% if has_comment %}<div>{{ publication.comment | markdownify }}</div>{% endif %}
+            {% if has_corrections %}<div><h3>Corrections and clarifications</h3>{{ publication.corrections | markdownify }}</div>{% endif %}
+            {% if has_related_work %}<div><h3>Related work</h3><ul class="related-list">{% for item in publication.related_work %}<li>{% if item.url and item.url != empty %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</li>{% endfor %}</ul></div>{% endif %}
+          </div>
+        </details>
+      {% endif %}
+    </article>
+  {% endfor %}
+</div>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Publications of {{ data.profile.name }}">
     <title>Publications | {{ data.profile.name }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=5">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=6">
     <script>
       window.MathJax = {
         tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
@@ -32,75 +32,17 @@
       <main class="standalone-main">
         <section class="section standalone-section" aria-labelledby="publications-title">
           <div class="section-heading"><h1 class="page-title" id="publications-title">Publications</h1></div>
-          {% if data.publication_profiles.size > 0 %}
+          {% if data.publication_profiles and data.publication_profiles.size > 0 %}
             <p class="publication-profiles">My research is also available on {% for profile in data.publication_profiles %}<a href="{{ profile.url }}">{{ profile.name }}</a>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}.</p>
           {% endif %}
+          {% include publication-list.html items=data.publications %}
 
-          <div class="publication-list">
-            {% for publication in data.publications %}
-              {% assign number_color = publication.number_color | default: data.publication_colors.number %}
-              {% assign title_color = publication.title_color | default: data.publication_colors.title %}
-              {% assign coauthors_color = publication.coauthors_color | default: data.publication_colors.coauthors %}
-              {% assign venue_color = publication.venue_color | default: data.publication_colors.venue %}
-              {% assign links_color = publication.links_color | default: data.publication_colors.links %}
-              {% assign has_arxiv = false %}
-              {% assign has_published = false %}
-              {% assign has_doi = false %}
-              {% assign has_paper = false %}
-              {% assign has_summary = false %}
-              {% assign has_comment = false %}
-              {% assign has_corrections = false %}
-              {% assign has_related_work = false %}
-              {% assign has_image = false %}
-              {% if publication.arxiv and publication.arxiv != empty %}{% assign has_arxiv = true %}{% endif %}
-              {% if publication.published and publication.published != empty %}{% assign has_published = true %}{% endif %}
-              {% if publication.doi and publication.doi != empty %}{% assign has_doi = true %}{% endif %}
-              {% if publication.paper and publication.paper != empty %}{% assign has_paper = true %}{% endif %}
-              {% if publication.summary and publication.summary != empty %}{% assign has_summary = true %}{% endif %}
-              {% if publication.comment and publication.comment != empty %}{% assign has_comment = true %}{% endif %}
-              {% if publication.corrections and publication.corrections != empty %}{% assign has_corrections = true %}{% endif %}
-              {% if publication.related_work and publication.related_work.size > 0 %}{% assign has_related_work = true %}{% endif %}
-              {% if publication.image and publication.image != empty %}{% assign has_image = true %}{% endif %}
-
-              <article class="publication" style="{% if number_color and number_color != empty %}--publication-number-color: {{ number_color }};{% endif %}{% if title_color and title_color != empty %}--publication-title-color: {{ title_color }};{% endif %}{% if coauthors_color and coauthors_color != empty %}--publication-coauthors-color: {{ coauthors_color }};{% endif %}{% if venue_color and venue_color != empty %}--publication-venue-color: {{ venue_color }};{% endif %}">
-                <div class="publication-line publication-meta-line">
-                  <p class="publication-citation">
-                    <span class="publication-number">{% if publication.number and publication.number != empty %}{{ publication.number }}{% else %}{{ forloop.rindex }}{% endif %}.</span>
-                    {% if publication.status and publication.status != empty %}<span class="status">{{ publication.status }}</span>{% endif %}
-                    {% if publication.status and publication.status != empty and publication.venue and publication.venue != empty %}<span class="citation-separator">·</span>{% endif %}
-                    {% if publication.venue and publication.venue != empty %}<span class="venue">{{ publication.venue }}{% if publication.volume and publication.volume != empty %} {{ publication.volume }}{% endif %}{% if publication.year and publication.year != empty %} · {{ publication.year }}{% endif %}{% if publication.pages and publication.pages != empty %} · {{ publication.pages }}{% endif %}</span>{% endif %}
-                  </p>
-                  {% if has_arxiv or has_published or has_doi or has_paper %}
-                    <div class="paper-links" aria-label="Publication links">
-                      {% if has_arxiv %}<a class="link-arxiv" href="{{ publication.arxiv }}">arXiv</a>{% endif %}
-                      {% if has_published %}<a class="link-published" href="{{ publication.published }}">Published version</a>{% elsif has_doi %}<a class="link-published" href="{{ publication.doi }}">Published version</a>{% endif %}
-                      {% if has_paper %}<a class="link-pdf" href="{{ publication.paper | relative_url }}">PDF</a>{% endif %}
-                    </div>
-                  {% endif %}
-                </div>
-
-                <div class="publication-line publication-title-line">
-                  <h2><em>{{ publication.title }}</em></h2>
-                  {% if publication.coauthors.size > 0 %}
-                    <p class="coauthors">with {% for person in publication.coauthors %}{% if person.url and person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}</p>
-                  {% endif %}
-                </div>
-
-                {% if has_summary or has_comment or has_corrections or has_related_work or has_image %}
-                  <details class="commentary-panel">
-                    <summary>Notes on this work</summary>
-                    <div class="commentary-content">
-                      {% if has_summary %}<div><h3>Summary</h3>{{ publication.summary | markdownify }}</div>{% endif %}
-                      {% if has_comment %}<div><h3>Comment</h3>{{ publication.comment | markdownify }}</div>{% endif %}
-                      {% if has_corrections %}<div><h3>Corrections and clarifications</h3>{{ publication.corrections | markdownify }}</div>{% endif %}
-                      {% if has_related_work %}<div><h3>Related work</h3><ul class="related-list">{% for item in publication.related_work %}<li>{% if item.url and item.url != empty %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</li>{% endfor %}</ul></div>{% endif %}
-                      {% if has_image %}<figure class="publication-figure"><img src="{{ publication.image | relative_url }}" alt="{{ publication.image_alt }}">{% if publication.image_caption and publication.image_caption != empty %}<figcaption>{{ publication.image_caption }}</figcaption>{% endif %}</figure>{% endif %}
-                    </div>
-                  </details>
-                {% endif %}
-              </article>
-            {% endfor %}
-          </div>
+          {% if data.other_writing and data.other_writing.size > 0 %}
+            <section class="other-writing" aria-labelledby="other-writing-title">
+              <h2 id="other-writing-title">Other writing</h2>
+              {% include publication-list.html items=data.other_writing %}
+            </section>
+          {% endif %}
         </section>
       </main>
 
