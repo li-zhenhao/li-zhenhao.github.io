@@ -654,7 +654,16 @@ footer p {
     grid-template-columns: 160px 1fr;
   }
 }
+@media (max-width: 900px) {
+  .publication-list {
+    margin-right: 0;
+  }
 
+  .commentary-panel:not([open]) {
+    margin-top: 3px;
+    position: static;
+  }
+}
 @media (max-width: 520px) {
   body {
     font-size: 15px;
