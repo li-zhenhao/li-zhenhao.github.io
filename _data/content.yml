@@ -55,8 +55,17 @@ publication_profiles:
   - name: "Google Scholar"
     url: "https://scholar.google.com/citations?user=k0apv5IAAAAJ&hl=en"
 
+# Publication colors
+publication_colors:
+  number: "#6F7775"
+  status: "#A34B2F"
+  title: "#17201F"
+  coauthors: "#626B69"
+  venue: "#626B69"
+  links: "#173B50"
+
 # Publication list
-publications:
+publications:  
   - title: "Synthetic notions of Ricci flow for metric measure spaces"
 
     coauthors:
@@ -66,12 +75,13 @@ publications:
       - name: "Timo Schultz"
         url: ""
 
-    venue: "Journal of Functional Analysis"
-    year: "2026"
+    venue: "Journal of Functional Analysis, 62 pages"
+    year: "2026+"
     status: "Accepted for publication"
 
     arxiv: "https://arxiv.org/abs/2501.07175"
     published: ""
+    doi: ""
     paper: ""
 
     summary: ""
@@ -91,7 +101,7 @@ publications:
       - name: "Timo Schultz"
         url: ""
 
-    venue: "Calculus of Variations and Partial Differential Equations"
+    venue: "Calculus of Variations and Partial Differential Equations, 34 pages"
     year: "2024"
     status: "Published"
 
