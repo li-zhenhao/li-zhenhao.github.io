@@ -85,33 +85,33 @@
 
         {% if data.show_sections.publications %}
           <section class="section" id="publications" aria-labelledby="publications-title">
-            <div class="section-heading">
-              <p class="section-number">02</p>
+            <div class="section-heading section-heading-plain">
               <h2 id="publications-title">Publications</h2>
             </div>
             {% if data.publication_profiles.size > 0 %}
               <p class="publication-profiles">
-                Research profiles:
+                My research is also available on
                 {% for profile in data.publication_profiles %}
-                  <a href="{{ profile.url }}">{{ profile.name }}</a>{% unless forloop.last %}<span aria-hidden="true"> · </span>{% endunless %}
-                {% endfor %}
+                  <a href="{{ profile.url }}">{{ profile.name }}</a>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}
+                {% endfor %}.
               </p>
             {% endif %}
             <div class="publication-list">
               {% for publication in data.publications %}
                 <article class="publication">
-                  <p class="publication-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</p>
                   <div class="publication-body">
                     <div class="publication-topline">
                       {% if publication.status != empty %}<p class="status">{{ publication.status }}</p>{% endif %}
-                      <p class="venue">{{ publication.venue }}{% if publication.year != empty %} · {{ publication.year }}{% endif %}</p>
+                      {% if publication.coauthors.size > 0 %}
+                        <p class="coauthors">with
+                          {% for person in publication.coauthors %}
+                            {% if person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}
+                          {% endfor %}
+                        </p>
+                      {% endif %}
                     </div>
-                    <h3>
-                      <em>{{ publication.title }}</em>{% if publication.coauthors.size > 0 %}, with
-                        {% for person in publication.coauthors %}
-                          {% if person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}
-                        {% endfor %}{% endif %}.
-                    </h3>
+                    <h3><em>{{ publication.title }}</em></h3>
+                    <p class="venue">{{ publication.venue }}{% if publication.year != empty %} · {{ publication.year }}{% endif %}</p>
                     {% if publication.summary != empty %}<div class="abstract">{{ publication.summary | markdownify }}</div>{% endif %}
                     {% if publication.paper != empty or publication.arxiv != empty or publication.published != empty or publication.doi != empty %}
                       <div class="paper-links" aria-label="Publication links">
