@@ -24,7 +24,17 @@
           <span class="publication-number">{% if publication.number and publication.number != empty %}{{ publication.number }}{% else %}{{ forloop.rindex }}{% endif %}.</span>
           {% if publication.status and publication.status != empty %}<span class="status">{{ publication.status }}</span>{% endif %}
           {% if publication.status and publication.status != empty and publication.venue and publication.venue != empty %}<span class="citation-separator">·</span>{% endif %}
-          {% if publication.venue and publication.venue != empty %}<span class="venue">{{ publication.venue }}{% if publication.volume and publication.volume != empty %} {{ publication.volume }}{% endif %}{% if publication.pages and publication.pages != empty %}, {{ publication.pages }}{% endif %}{% if publication.year and publication.year != empty %} · {{ publication.year }}{% endif %}</span>{% endif %}
+          {% if publication.status and publication.status != empty and publication.venue == empty and publication.year and publication.year != empty %}
+  <span class="citation-separator">·</span>
+{% endif %}
+{% if publication.venue and publication.venue != empty %}
+  <span class="venue">
+    {{ publication.venue }}{% if publication.volume and publication.volume != empty %} {{ publication.volume }}{% endif %}{% if publication.pages and publication.pages != empty %}, {{ publication.pages }}{% endif %}
+  </span>
+{% endif %}
+{% if publication.year and publication.year != empty %}
+  <span class="venue">{% if publication.venue and publication.venue != empty %} · {% endif %}{{ publication.year }}</span>
+{% endif %}
         </p>
         {% if has_arxiv or has_published or has_doi or has_paper %}
           <div class="paper-links" aria-label="Publication links">
