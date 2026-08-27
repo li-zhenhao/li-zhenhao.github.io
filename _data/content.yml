@@ -89,10 +89,10 @@ publications:
         url: ""
 
     venue: "Journal of Functional Analysis"
-    status: "Accepted for publication"
-    publication_info: "62 pages · 2026+"
+    status: "Published in"
+    publication_info: "64 pages · 2026"
     arxiv: "https://arxiv.org/abs/2501.07175"
-    published: ""
+    published: "https://www.sciencedirect.com/science/article/pii/S0022123626003253#bl0010"
     doi: ""
     paper: ""
 
@@ -141,6 +141,16 @@ other_writing:
       Doctoral thesis. Defense date: February 5, 2026.
 
   - title: "Synthetic approaches to Ricci flows"
+    coauthors:
+      - name: "Matthias Erbar"
+    coauthors:
+      - name: "Marco Flaim"
+    coauthors:
+      - name: "Eric Hupp"
+    coauthors:
+      - name: "Timo Schultz"
+    coauthors:
+      - name: "Karl-Theodor Sturm"
     venue: ""
     volume: ""
     publication_info: "2025"
@@ -150,7 +160,7 @@ other_writing:
     doi: ""
     paper: ""
     comment: |
-      SPP 2026 report, with Matthias Erbar, Marco Flaim, Eric Hupp, Timo Schultz, and Karl-Theodor Sturm.
+      Report of SPP 2026 – Geometry at Infinity
 
 experience:
   - years: "20xx–present"
