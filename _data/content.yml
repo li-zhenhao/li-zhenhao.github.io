@@ -20,7 +20,7 @@ profile:
       text: |
         My research interests are optimal transport and geometric analysis on metric measure spaces.
         Keywords for my current and past work include synthetic curvature bounds, rigidity phenomena, and superposition principles.
-  photo: "/assets/images/li.png"
+  photo: "/assets/li.png"
   photo_alt: "Portrait of Zhenhao Li"
   cv: ""
 
@@ -108,14 +108,6 @@ publications:
     published: "https://www.sciencedirect.com/science/article/pii/S0022123626003253#bl0010"
     doi: ""
     paper: ""
-
-    summary: ""
-    comment: ""
-    corrections: ""
-    image: ""
-    image_alt: ""
-    image_caption: ""
-    related_work: []
 
   - title: "Absolutely continuous and BV-curves in 1-Wasserstein spaces"
     coauthors:
