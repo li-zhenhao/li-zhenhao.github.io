@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Academic homepage of {{ data.profile.name }}">
     <title>{{ data.profile.name }} | {{ data.profile.field }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=7">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=8">
     <script>
       window.MathJax = {
         tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
@@ -34,10 +34,27 @@
           <div class="intro-copy">
             {% if data.profile.field != empty %}<p class="eyebrow">{{ data.profile.field }}</p>{% endif %}
             <h1 id="page-title">{{ data.profile.name }}</h1>
-            {% if data.profile.introduction != empty %}<div class="lead">{{ data.profile.introduction | markdownify }}</div>{% endif %}
+            <div class="profile-overview">
+              {% if data.profile.photo != empty %}
+                <figure class="profile-portrait">
+                  <img class="profile-photo" src="{{ data.profile.photo | relative_url }}" alt="{{ data.profile.photo_alt }}" width="530" height="586">
+                </figure>
+              {% endif %}
+              <div class="profile-bio">
+                {% if data.profile.introduction_sections and data.profile.introduction_sections.size > 0 %}
+                  {% for item in data.profile.introduction_sections %}
+                    <section class="bio-section">
+                      {% if item.title and item.title != empty %}<h2>{{ item.title }}</h2>{% endif %}
+                      {% if item.text and item.text != empty %}<div>{{ item.text | markdownify }}</div>{% endif %}
+                    </section>
+                  {% endfor %}
+                {% elsif data.profile.introduction != empty %}
+                  <div class="lead">{{ data.profile.introduction | markdownify }}</div>
+                {% endif %}
+              </div>
+            </div>
           </div>
           <aside class="contact" aria-label="Profile details">
-            {% if data.profile.photo != empty %}<img class="profile-photo" src="{{ data.profile.photo | relative_url }}" alt="{{ data.profile.photo_alt }}">{% endif %}
             {% if data.profile.affiliation != empty %}<p class="affiliation">{{ data.profile.affiliation }}</p>{% endif %}
             {% if data.profile.department != empty %}<p>{{ data.profile.department }}</p>{% endif %}
             {% if data.profile.location != empty %}<p>{{ data.profile.location }}</p>{% endif %}
