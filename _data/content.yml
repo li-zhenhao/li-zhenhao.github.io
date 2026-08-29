@@ -75,6 +75,14 @@ publication_colors:
 
 # Publication list
 publications:
+  - title: "Continuity equation on metric spaces via measure-valued derivations and BV-Wasserstein curves"
+    coauthors:
+      - name: "Ehsan Abedi"
+      - name: "Timo Schultz"
+    status: "Preprint"
+    venue: ""
+    publication_info: "45 pages · 2026"
+    arxiv: ""
   - title: "On the rigidity of Wasserstein contraction along heat flows"
     status: "Preprint"
     venue: ""
