@@ -432,6 +432,17 @@ h3 {
   color: var(--publication-coauthors-color, var(--navy));
 }
 
+.publication-inline-coauthors {
+  color: var(--publication-coauthors-color, var(--muted));
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.publication-inline-coauthors a {
+  color: var(--publication-coauthors-color, var(--navy));
+}
+
 .coauthor-name,
 .coauthor-name a {
   font-weight: 700;
@@ -508,6 +519,21 @@ h3 {
 
 .publication-title-line {
   grid-column: 1;
+}
+
+.publication-side-venue {
+  color: #9d4b32;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+  max-width: 38vw;
+  text-align: right;
+}
+
+.publication-side-venue.is-preprint {
+  color: #24658a;
 }
 
 .commentary-toggle {
@@ -785,6 +811,11 @@ footer p {
   }
 
   .coauthors {
+    max-width: none;
+    text-align: left;
+  }
+
+  .publication-side-venue {
     max-width: none;
     text-align: left;
   }
