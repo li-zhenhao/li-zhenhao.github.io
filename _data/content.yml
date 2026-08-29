@@ -12,13 +12,16 @@ profile:
   location: ""
   email: "lzhkokiko(at)gmail.com"
   email2: "zhenhao.li(at)math.uni-bielefeld.de"
-  introduction: |
-    I am currently a research assistant (Wiss. Mitarbeiter) at Bielefeld University, in the group of Prof. Matthias Erbar.
-
-    My research interests are optimal transport and geometric analysis on metric measure spaces. 
-    Key words for my current and past works include synthetic curvature bounds, rigidity phenomena, and superposition principles.
-  photo: ""
-  photo_alt: ""
+  introduction_sections:
+    - title: "Current position"
+      text: |
+        I am currently a research assistant (Wiss. Mitarbeiter) at Bielefeld University, in the group of Prof. Matthias Erbar.
+    - title: "Research interests"
+      text: |
+        My research interests are optimal transport and geometric analysis on metric measure spaces.
+        Keywords for my current and past work include synthetic curvature bounds, rigidity phenomena, and superposition principles.
+  photo: "/assets/images/li.png"
+  photo_alt: "Portrait of Zhenhao Li"
   cv: ""
 
 education:
@@ -190,4 +193,3 @@ activities:
   service:
     - activity: "[Academic service]"
       details: "[Role and year]"
-
