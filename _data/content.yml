@@ -82,15 +82,13 @@ publications:
     coauthors:
       - name: "Ehsan Abedi"
       - name: "Timo Schultz"
-    status: "Preprint"
-    venue: ""
+    venue: "Preprint"
     publication_info: "45 pages · 2026"
     arxiv: ""
     comment: | 
       This is the second paper in our series: “BV Curves in $1$-Wasserstein spaces II: continuity equation via measure-valued derivations.”
   - title: "On the rigidity of Wasserstein contraction along heat flows"
-    status: "Preprint"
-    venue: ""
+    venue: "Preprint"
     publication_info: "30 pages · 2025"
     arxiv: "https://arxiv.org/abs/2505.02280"
    
