@@ -10,16 +10,17 @@
     {% assign has_comment = false %}
     {% assign has_corrections = false %}
     {% assign has_related_work = false %}
-    {% assign has_status = false %}
     {% assign has_venue = false %}
     {% assign has_info = false %}
+    {% assign is_preprint = false %}
     {% assign display_info = publication.publication_info %}
     {% if display_info == nil or display_info == empty %}
       {% capture generated_info %}{% if publication.pages and publication.pages != empty %}{{ publication.pages }}{% endif %}{% if publication.pages and publication.pages != empty and publication.year and publication.year != empty %} · {% endif %}{% if publication.year and publication.year != empty %}{{ publication.year }}{% endif %}{% endcapture %}
       {% assign display_info = generated_info | strip %}
     {% endif %}
-    {% if publication.status and publication.status != empty %}{% assign has_status = true %}{% endif %}
     {% if publication.venue and publication.venue != empty %}{% assign has_venue = true %}{% endif %}
+    {% assign normalized_venue = publication.venue | default: "" | strip | downcase %}
+    {% if normalized_venue == "preprint" %}{% assign is_preprint = true %}{% endif %}
     {% if display_info and display_info != empty %}{% assign has_info = true %}{% endif %}
     {% if publication.arxiv and publication.arxiv != empty %}{% assign has_arxiv = true %}{% endif %}
     {% if publication.published and publication.published != empty %}{% assign has_published = true %}{% endif %}
@@ -33,10 +34,8 @@
       <div class="publication-line publication-meta-line">
         <p class="publication-citation">
           <span class="publication-number">{% if publication.number and publication.number != empty %}{{ publication.number }}{% else %}{{ forloop.rindex }}{% endif %}.</span>
-          {% if has_status %}<span class="status">{{ publication.status }}</span>{% endif %}
-          {% if has_status and has_venue %}<span class="citation-separator">·</span>{% endif %}
-          {% if has_venue %}<span class="venue">{{ publication.venue }}{% if publication.volume and publication.volume != empty %} {{ publication.volume }}{% endif %}</span>{% endif %}
-          {% if has_info %}{% if has_status or has_venue %}<span class="citation-separator">·</span>{% endif %}<span class="publication-info">{{ display_info }}</span>{% endif %}
+          {% if publication.coauthors and publication.coauthors.size > 0 %}<span class="publication-inline-coauthors">with {% for person in publication.coauthors %}<span class="coauthor-name">{% if person.url and person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}</span>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}</span>{% endif %}
+          {% if has_info %}{% if publication.coauthors and publication.coauthors.size > 0 %}<span class="citation-separator">·</span>{% endif %}<span class="publication-info">{{ display_info }}</span>{% endif %}
         </p>
         {% if has_arxiv or has_published or has_doi or has_paper %}
           <div class="paper-links" aria-label="Publication links">
@@ -49,9 +48,7 @@
 
       <div class="publication-line publication-title-line">
         <h2><em>{{ publication.title }}</em></h2>
-        {% if publication.coauthors and publication.coauthors.size > 0 %}
-          <p class="coauthors">with {% for person in publication.coauthors %}<span class="coauthor-name">{% if person.url and person.url != empty %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}</span>{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %}</p>
-        {% endif %}
+        {% if has_venue %}<p class="publication-side-venue{% if is_preprint %} is-preprint{% endif %}">{{ publication.venue }}{% if publication.volume and publication.volume != empty %} {{ publication.volume }}{% endif %}</p>{% endif %}
       </div>
 
       {% if has_comment or has_corrections or has_related_work %}
