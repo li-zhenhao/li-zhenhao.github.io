@@ -610,7 +610,7 @@ h3 {
 }
 
 .other-writing > h2 {
-  border-top: 1px solid var(--ink);
+  border-top: 0;
   font-size: 27px;
   font-weight: 400;
   line-height: 1.1;
@@ -690,7 +690,7 @@ h3 {
 
 footer {
   align-items: center;
-  border-top: 1px solid var(--ink);
+  border-top: 0;
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
