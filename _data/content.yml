@@ -83,7 +83,7 @@ publications:
       - name: "Timo Schultz"
     venue: "Preprint"
     publication_info: "45 pages · 2026"
-    arxiv: ""
+    arxiv: "https://arxiv.org/abs/2608.28586"
     comment: | 
       This is the second paper in our series: “BV Curves in $1$-Wasserstein spaces II: continuity equation via measure-valued derivations.”
   - title: "On the rigidity of Wasserstein contraction along heat flows"
