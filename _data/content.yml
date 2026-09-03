@@ -170,15 +170,16 @@ experience:
     institution: "[Department, University or Institute]"
 
 activities:
-  refereeing:
-    - journal: "Journal of Functional Analysis"
-      years: ""
-
   conferences:
-    - event: "[Conference or seminar]"
+    - event: "[To compelete]"
       role: "[Invited talk / contributed talk / organiser]"
       details: "[Place, talk title, month year]"
 
   service:
-    - activity: "[Academic service]"
+    - activity: "[To complete]"
       details: "[Role and year]"
+  
+  refereeing:
+    - journal: "Journal of Functional Analysis"
+      years: ""
+
