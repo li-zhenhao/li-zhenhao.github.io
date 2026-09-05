@@ -183,3 +183,9 @@ activities:
     - journal: "Journal of Functional Analysis"
       years: ""
 
+others:
+  items:
+    - title: "春兴组诗"
+      type: "诗"
+      date: "2026年4月"
+      url: "/others/chunxing.html"

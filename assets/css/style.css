@@ -688,6 +688,104 @@ h3 {
   grid-template-columns: 180px 1fr;
 }
 
+.others-list {
+  border-top: 1px solid var(--line);
+}
+
+.other-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.other-item-link {
+  align-items: baseline;
+  color: var(--ink);
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 15px 0 17px;
+  text-decoration: none;
+}
+
+.other-item-link:hover .other-item-title {
+  color: var(--accent);
+}
+
+.other-item-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.other-item-meta,
+.other-detail-meta,
+.other-back-link {
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.other-item-meta {
+  font-size: 12px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.other-item-arrow {
+  color: var(--navy);
+  margin-left: 10px;
+}
+
+.other-detail {
+  max-width: 760px;
+}
+
+.other-back-link {
+  font-size: 11px;
+  margin: 0 0 22px;
+}
+
+.other-detail .section-heading {
+  margin-bottom: 8px;
+}
+
+.other-detail-meta {
+  font-size: 12px;
+  margin: 0 0 34px;
+}
+
+.poem-collection {
+  border-top: 1px solid var(--line);
+  padding-top: 4px;
+}
+
+.poem-piece {
+  margin: 30px 0 42px;
+}
+
+.poem-piece h2 {
+  color: var(--accent);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.poem-text,
+.poem-note {
+  font-family: "Noto Serif CJK SC", "Songti SC", STSong, SimSun, serif;
+  font-size: 18px;
+  line-height: 2;
+  margin: 0;
+}
+
+.poem-note {
+  color: var(--muted);
+  font-size: 15px;
+}
+
 footer {
   align-items: center;
   border-top: 0;
@@ -736,6 +834,10 @@ footer p {
 
   .activity-list article {
     grid-template-columns: 160px 1fr;
+  }
+
+  .other-detail {
+    max-width: none;
   }
 }
 @media (max-width: 900px) {
@@ -832,6 +934,19 @@ footer p {
   .activity-list article {
     gap: 6px;
     grid-template-columns: 1fr;
+  }
+
+  .other-item-link {
+    gap: 3px;
+    grid-template-columns: 1fr;
+  }
+
+  .other-item-meta {
+    white-space: normal;
+  }
+
+  .poem-text {
+    font-size: 17px;
   }
 
   footer {

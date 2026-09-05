@@ -1,0 +1,79 @@
+---
+---
+{% assign data = site.data.content %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="春兴组诗，李震昊，2026年4月">
+    <title>春兴组诗 | {{ data.profile.name }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=12">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="masthead" id="top">
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          {% if data.show_sections.research %}<a href="{{ '/' | relative_url }}#research">Research</a>{% endif %}
+          <a href="{{ '/publications.html' | relative_url }}">Publications</a>
+          {% if data.show_sections.experience %}<a href="{{ '/' | relative_url }}#experience">Experience</a>{% endif %}
+          <a href="{{ '/activities.html' | relative_url }}">Activities</a>
+          <a href="{{ '/others.html' | relative_url }}" aria-current="page">Others</a>
+        </nav>
+      </header>
+
+      <main class="standalone-main">
+        <section class="section standalone-section other-detail" aria-labelledby="poem-title">
+          <p class="other-back-link"><a href="{{ '/others.html' | relative_url }}">← Back to Others</a></p>
+          <div class="section-heading"><h1 class="page-title" id="poem-title">春兴组诗</h1></div>
+          <p class="other-detail-meta">2026年4月</p>
+
+          <div class="poem-collection">
+            <section class="poem-piece" aria-labelledby="poem-one">
+              <h2 id="poem-one">其一</h2>
+              <p class="poem-text">三十年来羁旅客，闲情散却一身愁。<br>可怜逝者长流水，桃李春风不自由。</p>
+            </section>
+
+            <section class="poem-piece" aria-labelledby="poem-two">
+              <h2 id="poem-two">其二</h2>
+              <p class="poem-text">月凝春露夜裁冰，旧曲殚心谁肯听？<br>细处常需千种虑，畏难未必非豪英。</p>
+            </section>
+
+            <section class="poem-piece" aria-labelledby="poem-three">
+              <h2 id="poem-three">其三</h2>
+              <p class="poem-text">道在迩犹多过客，求诸远岂皆衷肠。<br>春花谢奈归人晚，此意难非旧考量。</p>
+            </section>
+
+            <section class="poem-piece" aria-labelledby="poem-four">
+              <h2 id="poem-four">其四</h2>
+              <p class="poem-note">不公开</p>
+            </section>
+
+            <section class="poem-piece" aria-labelledby="poem-five">
+              <h2 id="poem-five">其五</h2>
+              <p class="poem-text">楼船满载冲波开，山霭湖光赶水来。<br>深卧高楼苦早起，至今犹记赶月台。</p>
+            </section>
+
+            <section class="poem-piece" aria-labelledby="poem-six">
+              <h2 id="poem-six">其六</h2>
+              <p class="poem-text">事业艰难无定业，人生而立叹凡人。<br>有肉沙拉牛马胃，无醇啤酒少年心。</p>
+            </section>
+
+            <section class="poem-piece" aria-labelledby="poem-seven">
+              <h2 id="poem-seven">其七</h2>
+              <p class="poem-text">工多只恨时节晚，世路风波一夜高。<br>前路同为初到客，丹心一片历波涛。</p>
+            </section>
+
+            <section class="poem-piece" aria-labelledby="poem-eight">
+              <h2 id="poem-eight">其八</h2>
+              <p class="poem-note">未完</p>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer><p>© {{ 'now' | date: '%Y' }} {{ data.profile.name }}</p><a href="#top">Back to top ↑</a></footer>
+    </div>
+  </body>
+</html>
