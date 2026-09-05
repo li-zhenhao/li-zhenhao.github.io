@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Other writing and creative work by {{ data.profile.name }}">
     <title>Others | {{ data.profile.name }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=12">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=13">
   </head>
   <body>
     <div class="site-shell">
@@ -30,8 +30,11 @@
             {% for item in data.others.items %}
               <article class="other-item">
                 <a class="other-item-link" href="{{ item.url | relative_url }}">
-                  <h2 class="other-item-title" lang="zh-CN">{{ item.title }}</h2>
-                  <p class="other-item-meta" lang="zh-CN">{{ item.type }} · {{ item.date }}<span class="other-item-arrow" aria-hidden="true">→</span></p>
+                  <span class="other-item-main" lang="zh-CN">
+                    <span class="other-item-heading"><span class="other-item-number">{{ forloop.index }}.</span><span class="other-item-title">{{ item.title }}</span></span>
+                    <span class="other-item-date">{{ item.date }}</span>
+                  </span>
+                  <span class="other-item-arrow" aria-hidden="true">→</span>
                 </a>
               </article>
             {% endfor %}
