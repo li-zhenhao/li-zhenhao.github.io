@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Publications of {{ data.profile.name }}">
     <title>Publications | {{ data.profile.name }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=11">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=12">
     <script>
       window.MathJax = {
         tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']] },
@@ -26,6 +26,7 @@
           <a href="{{ '/publications.html' | relative_url }}" aria-current="page">Publications</a>
           {% if data.show_sections.experience %}<a href="{{ '/' | relative_url }}#experience">Experience</a>{% endif %}
           <a href="{{ '/activities.html' | relative_url }}">Activities</a>
+          <a href="{{ '/others.html' | relative_url }}">Others</a>
         </nav>
       </header>
 
