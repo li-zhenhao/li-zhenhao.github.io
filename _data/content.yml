@@ -77,6 +77,17 @@ publication_colors:
 
 # Publication list
 publications:
+  - title: "Lipschitz volume rigidity for non-collapsed RCD spaces with boundary"
+    coauthors:
+      - name: "Enrico Pasqualetto"
+      - name: "Xin Qian"
+    venue: "Preprint"
+    publication_info: "40 pages · 2026"
+    arxiv: "https://arxiv.org/abs/2610.39493"
+    comment: | 
+      This is my first paper without "Wasserstein distance".
+    
+publications:
   - title: "Continuity equation on metric spaces via measure-valued derivations and BV-Wasserstein curves"
     coauthors:
       - name: "Ehsan Abedi"
