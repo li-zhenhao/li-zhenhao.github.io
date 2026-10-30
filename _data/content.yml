@@ -87,7 +87,6 @@ publications:
     comment: | 
       This is my first paper without "Wasserstein distance".
     
-publications:
   - title: "Continuity equation on metric spaces via measure-valued derivations and BV-Wasserstein curves"
     coauthors:
       - name: "Ehsan Abedi"
